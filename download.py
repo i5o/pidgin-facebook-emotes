@@ -19,8 +19,13 @@ if os.path.exists("emojis.json"):
 
 count = 0
 for emoji in emojis:
-    if emoji in emojis_pngs:
-        print "Emoji '%s' already downloaded" % emoji
+    if emoji.decode("utf-8") in emojis_pngs.keys():
+        if emojis_pngs[emoji.decode("utf-8")] == "Not available":
+           print "Emoji '%s' not downloaded but consulted" % emoji
+        else:
+           print "Emoji '%s' already downloaded" % emoji
+
+        count += 1
         continue
 
     count += 1
@@ -58,6 +63,7 @@ for emoji in emojis:
         img = img.resize((32, hsize), PIL.Image.ANTIALIAS)
         img.save(emoji_path)
     except Exception as e:
+        emoji_path = "Not available"
         emojis_pngs[emoji] = "Not available"
 
     f = open("emojis.json", "w")
