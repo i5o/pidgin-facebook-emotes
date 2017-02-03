@@ -23,12 +23,14 @@ emojis = lines[6:]
 
 emojis_data = {}
 for emoji in emojis:
-	s = emoji.split("\t")
-	emojis_data[int(s[0][:-4])] = s[1]
+    s = emoji.split("\t")
+    emojis_data[int(s[0][:-4])] = s[1]
 
 for emoji in sorted(emojis_data):
-        if os.path.exists("/usr/share/pixmaps/pidgin/emotes/FacebookMessenger/%d.png" % emoji):
-		new_theme_file += "%d.png\t%s\n" % (emoji, emojis_data[emoji])
+    if os.path.exists(
+        "/usr/share/pixmaps/pidgin/emotes/FacebookMessenger/%d.png" %
+            emoji):
+        new_theme_file += "%d.png\t%s\n" % (emoji, emojis_data[emoji])
 
 w = open("theme", "w")
 w.write(new_theme_file)

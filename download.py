@@ -21,9 +21,9 @@ count = 0
 for emoji in emojis:
     if emoji.decode("utf-8") in emojis_pngs.keys():
         if emojis_pngs[emoji.decode("utf-8")] == "Not available":
-           print "Emoji '%s' not downloaded but consulted" % emoji
+            print "Emoji '%s' not downloaded but consulted" % emoji
         else:
-           print "Emoji '%s' already downloaded" % emoji
+            print "Emoji '%s' already downloaded" % emoji
 
         count += 1
         continue
